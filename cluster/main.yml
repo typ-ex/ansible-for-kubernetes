@@ -1,0 +1,15 @@
+---
+- hosts: kube
+  become: true
+
+  pre_tasks:
+          - include_tasks: tasks/vagrant-setup.yml
+
+  roles:
+          - geerlingguy.security
+          - geerlingguy.swap
+          - geerlingguy.docker
+          - geerlingguy.kubernetes
+
+  vars_files:
+          - vars/main.yml

@@ -1,12 +1,13 @@
 ---
 - hosts: localhost
   gather_facts: false
+  become: yes
 
   vars:
     ansible_python_interpreter: '{{ ansible_playbook_python }}'
     image_name: hello-go
     replicas: 1
-    app_state: absent
+    app_state: present
 
   pre_tasks:
     - name: Check Minikube's status.

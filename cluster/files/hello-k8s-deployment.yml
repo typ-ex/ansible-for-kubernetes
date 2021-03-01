@@ -9,13 +9,13 @@ spec:
   selector:
     matchLabels:
       app: hello-k8s
-    template:
-      metadata:
-        labels:
-          app: hello-k8s
-      spec:
-        containers:
-        - name: hello-k8s
-          image: paulbouwer/hello-kubernetes:1.5
-          ports:
-          - containerPort: 8080
+  template:
+    metadata:
+      labels:
+        app: hello-k8s
+    spec:
+      containers:
+      - name: hello-k8s
+        image: paulbouwer/hello-kubernetes:1.5
+        ports:
+        - containerPort: 8080

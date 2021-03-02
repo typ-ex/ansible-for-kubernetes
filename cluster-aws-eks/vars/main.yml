@@ -21,3 +21,6 @@ eks_nodegroup_cluster_size: 3
 
 # Wordpress settings
 wordpress_mysql_password: ebJYfAi2QjhPsR
+
+# Kubernetes settings
+k8s_kubeconfig: ~/.kube/eks-example

@@ -59,7 +59,7 @@ Resources:
           Value: eks-example
 
   InboundNetworkAclEntrySSH:
-    Type: AWS::EC2::NetworkACLEntry
+    Type: AWS::EC2::NetworkAclEntry
     Properties:
       NetworkAclId: !Ref NetworkAcl
       RuleNumber: 100
@@ -127,7 +127,7 @@ Resources:
       RouteTableId: !Ref RouteTable
       
   Subnet1bNetworkAclAssociation:
-    Type: AWS::EC2::SubnetNetworkAclAssocation
+    Type: AWS::EC2::SubnetNetworkAclAssociation
     Properties:
       SubnetId: !Ref Subnet1b
       NetworkAclId: !Ref NetworkAcl
@@ -165,4 +165,4 @@ Outputs:
   Subnets:
     Description: List of Subnets in the VPC
     Value:
-      Fn::Sub: '${subnet1a},${Subnet1b},${Subnet1c}'
+      Fn::Sub: '${Subnet1a},${Subnet1b},${Subnet1c}'

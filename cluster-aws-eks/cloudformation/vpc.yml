@@ -51,86 +51,86 @@ Resources:
     DependsOn: AttachGateway
 
   NetworkAcl:
-  Type: AWS::EC2::NetworkAcl
-  Properties:
-    VpcId: !Ref VPC
-    Tags:
-      - Key: Name
-        Value: eks-example
+    Type: AWS::EC2::NetworkAcl
+    Properties:
+      VpcId: !Ref VPC
+      Tags:
+        - Key: Name
+          Value: eks-example
 
   InboundNetworkAclEntrySSH:
-  Type: AWS::EC2::NetworkACLEntry
-  Properties:
-    NetworkAclId: !Ref NetworkAcl
-    RuleNumber: 100
-    RuleAction: allow
-    Protocol: -1
-    Egress: false
-    CidrBlock: 0.0.0.0/0
-    PortRange:
-      From: 22
-      To: 22
+    Type: AWS::EC2::NetworkACLEntry
+    Properties:
+      NetworkAclId: !Ref NetworkAcl
+      RuleNumber: 100
+      RuleAction: allow
+      Protocol: -1
+      Egress: false
+      CidrBlock: 0.0.0.0/0
+      PortRange:
+        From: 22
+        To: 22
 
   OutboundNetworkAclEntryAll:
-  Type: AWS::EC2::NetworkAclEntry
-  Properties:
-    NetworkAclId: !Ref NetworkAcl
-    RuleNumber: 101
-    RuleAction: allow
-    Protocol: -1
-    Egress: true
-    CidrBlock: 0.0.0.0/0
-    PortRange:
-      From: 0
-      To: 65535
+    Type: AWS::EC2::NetworkAclEntry
+    Properties:
+      NetworkAclId: !Ref NetworkAcl
+      RuleNumber: 101
+      RuleAction: allow
+      Protocol: -1
+      Egress: true
+      CidrBlock: 0.0.0.0/0
+      PortRange:
+        From: 0
+        To: 65535
 
   Subnet1a:
-  Type: AWS::EC2::Subnet
-  Properties:
-    VpcId: !Ref VPC
-    AvailabilityZone:
-      Fn::Sub: '${Region}a'
-    MapPublicIpOnLaunch: true
-    CidrBlock: 172.16.0.0/18
-    Tags:
-      - Key: Name
-        Value: eks-example-a
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      AvailabilityZone:
+        Fn::Sub: '${Region}a'
+      MapPublicIpOnLaunch: true
+      CidrBlock: 172.16.0.0/18
+      Tags:
+        - Key: Name
+          Value: eks-example-a
 
   Subnet1aRouteTableAssociation:
-  Type: AWS::EC2::SubnetRouteTableAssociation
-  Properties:
-    SubnetId: !Ref Subnet1a
-    RouteTableId: !Ref RouteTable
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref Subnet1a
+      RouteTableId: !Ref RouteTable
 
   Subnet1aNetworkAclAssociation:
-  Type: AWS::EC2::SubnetNetworkAclAssociation
-  Properties:
-    SubnetId: !Ref Subnet1a
-    NetworkAclId: !Ref NetworkAcl
+    Type: AWS::EC2::SubnetNetworkAclAssociation
+    Properties:
+      SubnetId: !Ref Subnet1a
+      NetworkAclId: !Ref NetworkAcl
 
   Subnet1b:
-  Type: AWS::EC2::Subnet
-  Properties:
-    VpcId: !Ref VPC
-    AvailabilityZone:
-      Fn::Sub: '${Region}b'
-    CidrBlock: 172.16.64.0/18
-    MapPublicIpOnLaunch: true
-    Tags:
-      - Key: Name
-        Value: eks-example-b
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      AvailabilityZone:
+        Fn::Sub: '${Region}b'
+      CidrBlock: 172.16.64.0/18
+      MapPublicIpOnLaunch: true
+      Tags:
+        - Key: Name
+          Value: eks-example-b
 
   Subnet1bRouteTableAssociation:
-  Type: AWS::EC2::SubnetRouteTableAssociation
-  Properties:
-    SubnetId: !Ref Subnet1b
-    RouteTableId: !Ref RouteTable
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref Subnet1b
+      RouteTableId: !Ref RouteTable
       
   Subnet1bNetworkAclAssociation:
-  Type: AWS::EC2::SubnetNetworkAclAssocation
-  Properties:
-    SubnetId: !Ref Subnet1b
-    NetworkAclId: !Ref NetworkAcl
+    Type: AWS::EC2::SubnetNetworkAclAssocation
+    Properties:
+      SubnetId: !Ref Subnet1b
+      NetworkAclId: !Ref NetworkAcl
 
   Subnet1c:
     Type: AWS::EC2::Subnet

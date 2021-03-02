@@ -24,6 +24,7 @@ wordpress_mysql_password: ebJYfAi2QjhPsR
 
 # Kubernetes settings
 k8s_kubeconfig: ~/.kube/eks-example
+k8s_no_log: true
 
 # Domain settings for Route53 DNS.
 wordpress_route53_zone: '' # e.g. 'example.com'

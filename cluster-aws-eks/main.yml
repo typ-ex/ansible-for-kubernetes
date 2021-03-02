@@ -38,10 +38,10 @@
           KubernetesVersion: "{{ eks_kubernetes_version }}"
           Subnets: "{{ stack_outputs.Subnets }}"
           VpcId: "{{ stack_outputs.VpcId }}"
-          tags:
-            stack: eks-example-cluster
-            application: eks-example
-      register: eks_cluster:info
+        tags:
+          stack: eks-example-cluster
+          application: eks-example
+      register: eks_cluster_info
 
     - name: Add to stack_outputs.
       set_fact:
@@ -61,7 +61,7 @@
           NodeGroupDesiredCapacity: "{{ eks_nodegroup_cluster_size }}"
           NodeInstanceType: "{{ eks_nodegroup_instance_type }}"
           Subnets: "{{ stack_outputs.Subnets }}"
-          tags:
-            stack: eks-example-nodegroup
-            application: eks-example
+        tags:
+          stack: eks-example-nodegroup
+          application: eks-example
       register: eks_nodegroup_info

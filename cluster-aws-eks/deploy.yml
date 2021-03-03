@@ -11,7 +11,7 @@
         definition: '{{ item }}'
         kubeconfig: '{{ k8s_kubeconfig }}'
         state: present
-      loop: "{{ lookup('template], 'wordpress/mysql-pass.yml') | from_yaml_all | list }}"
+      loop: "{{ lookup('template', 'wordpress/mysql-pass.yml') | from_yaml_all | list }}"
       no_log: "{{ k8s_no_log }}"
 
     - name: Deploy MySQL and Wordpress.
@@ -25,7 +25,7 @@
 
     - name: Get load balancer DNS name.
       k8s_info:
-        kubeconfig: '{{ k8s_cubeconfig }}'
+        kubeconfig: '{{ k8s_kubeconfig }}'
         kind: Service
         name: wordpress
         namespace: default

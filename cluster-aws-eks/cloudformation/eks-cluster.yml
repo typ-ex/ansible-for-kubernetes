@@ -33,9 +33,9 @@ Resources:
             Service:
               - eks.amazonaws.com
           Action: sts:AssumeRole
-          ManagedPolicyArns:
-            - arn:aws:iam::aws:policy/AmazonEKSClusterPolicy
-            - arn:aws:iam::aws:policy/AmazonEKSServicePolicy
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AmazonEKSClusterPolicy
+        - arn:aws:iam::aws:policy/AmazonEKSServicePolicy
 
   ClusterControlPlaneSecurityGroup:
     Type: AWS::EC2::SecurityGroup

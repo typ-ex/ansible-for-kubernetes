@@ -45,7 +45,7 @@
 
     - name: Add to stack_outputs.
       set_fact:
-        stack_outputs: "{{ stack_outputs | combine(eks_cluster_info['stack_outputs') }}"
+        stack_outputs: "{{ stack_outputs | combine(eks_cluster_info['stack_outputs']) }}"
 
     - name: Ensure EKS Node Group exists via CloudFormation.
       cloudformation:
